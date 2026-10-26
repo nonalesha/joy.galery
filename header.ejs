@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#531724">
+  <meta name="description" content="Joy Galery — digital treasures for your creative days. Template Canva, moodboard, wording, dan produk digital pilihan.">
+  <title><%= title ? `${title} | Joy Galery` : 'Joy Galery — Digital Treasures' %></title>
+  <link rel="icon" href="/images/products/moodboard.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/main.js" defer></script>
+</head>
+<body>
+  <div class="announcement">A LITTLE JOY FOR YOUR DIGITAL WORLD <span>✳</span></div>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="/" aria-label="Joy Galery beranda">
+        <span class="brand-mark">j<span>✳</span></span>
+        <span class="brand-name">joy <i>galery</i><small>digital treasures</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Navigasi utama">
+        <a href="/#koleksi">Koleksi</a>
+        <a href="/#tentang">Tentang</a>
+        <a href="/#cara-beli">Cara Beli</a>
+      </nav>
+      <div class="nav-actions">
+        <% if (isAdmin) { %>
+          <a class="button button-small button-outline" href="/admin">Dashboard</a>
+        <% } else { %>
+          <a class="icon-link" href="/admin/login" aria-label="Login admin" title="Login admin"><span>↗</span></a>
+        <% } %>
+      </div>
+      <button class="menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false" data-menu-toggle><span></span><span></span></button>
+    </div>
+  </header>
+  <% if (flash) { %>
+    <div class="container flash-wrap"><div class="flash flash-<%= flash.type %>" role="status"><span><%= flash.message %></span><button type="button" aria-label="Tutup pesan" data-dismiss-flash>×</button></div></div>
+  <% } %>
+  <main>

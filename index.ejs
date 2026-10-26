@@ -1,0 +1,60 @@
+<%- include('partials/header', { title }) %>
+<section class="hero">
+  <div class="hero-grain"></div>
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> YOUR LITTLE DIGITAL FINDS</p>
+      <h1>Make room for<br><em>a little joy.</em></h1>
+      <p class="hero-description">Template cantik, moodboard penuh cerita, dan wording yang terasa kamu banget. Semua digital, praktis, dan siap jadi bagian dari harimu.</p>
+      <div class="hero-actions"><a class="button button-cream" href="#koleksi">Explore the collection <span>↗</span></a><a class="text-link text-link-light" href="#cara-beli">Cara membeli <span>↓</span></a></div>
+      <div class="hero-note"><span class="note-star">✳</span><span>Thoughtfully curated<br><b>for your creative side.</b></span></div>
+    </div>
+    <div class="hero-art" aria-label="Preview koleksi produk digital">
+      <div class="art-sticker sticker-top">CURATED<br>WITH LOVE <span>♥</span></div>
+      <div class="art-card art-card-back"><span>THE ART OF</span><strong>little<br>things.</strong><small>VOL. 01 / DIGITAL</small></div>
+      <div class="art-card art-card-front"><img src="/images/products/moodboard.svg" alt="Preview moodboard aesthetic"><div class="art-front-caption"><span>THE MOOD EDIT</span><b>soft tones, bold ideas.</b></div></div>
+      <div class="art-circle"><span>JOY<br>IN EVERY<br>DETAIL</span><b>✳</b></div>
+      <div class="art-sticker sticker-bottom">DIGITAL<br>GOODIES <span>↗</span></div>
+    </div>
+  </div>
+  <div class="hero-bottom container"><span>01 — CREATIVE TOOLS</span><span>02 — LITTLE INSPIRATIONS</span><span>03 — YOUR NEXT FAVOURITE</span></div>
+</section>
+
+<section class="section collection-section" id="koleksi">
+  <div class="container">
+    <div class="section-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> THE JOY COLLECTION</p><h2>Good things, <em>digitally.</em></h2></div><p class="heading-side">Small details can make<br>a whole lot of difference.</p></div>
+    <form class="catalog-tools" action="/" method="get">
+      <label class="search-field"><span aria-hidden="true">⌕</span><input type="search" name="q" value="<%= q %>" placeholder="Cari template, moodboard, wording..." aria-label="Cari produk"></label>
+      <label class="category-select"><span class="sr-only">Kategori</span><select name="category" aria-label="Filter kategori"><option value="">Semua kategori</option><% categories.forEach((item) => { %><option value="<%= item %>" <%= category === item ? 'selected' : '' %>><%= item %></option><% }) %></select></label>
+      <button class="button button-dark button-small" type="submit">Cari produk</button>
+      <% if (q || category) { %><a class="clear-filter" href="/#koleksi">Reset</a><% } %>
+    </form>
+    <% if (products.length) { %>
+      <div class="product-grid">
+        <% products.forEach((product, index) => { %>
+          <article class="product-card">
+            <a class="product-image-wrap" href="/produk/<%= product.slug %>">
+              <% if (product.badge) { %><span class="product-badge"><%= product.badge %></span><% } %>
+              <img class="product-image" src="<%= product.image %>" alt="Preview <%= product.name %>" loading="lazy">
+              <span class="image-arrow" aria-hidden="true">↗</span>
+            </a>
+            <div class="product-meta"><span><%= product.category %></span><span class="product-index">JG.0<%= index + 1 %></span></div>
+            <h3><a href="/produk/<%= product.slug %>"><%= product.name %></a></h3>
+            <div class="product-foot"><strong><%= formatPrice(product.price) %></strong><a href="/produk/<%= product.slug %>" aria-label="Lihat <%= product.name %>">Discover <span>↗</span></a></div>
+          </article>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <div class="empty-state"><span class="empty-star">✳</span><h3>Belum ada yang cocok.</h3><p>Coba kata kunci lain atau tampilkan semua koleksi.</p><a class="button button-dark" href="/">Lihat semua produk</a></div>
+    <% } %>
+    <div class="collection-bottom"><span>ENDLESS IDEAS, ONE LITTLE SHOP.</span><span><i>✳</i> Browse. Choose. Enjoy.</span></div>
+  </div>
+</section>
+
+<section class="editorial-band" id="tentang"><div class="container editorial-grid"><div class="editorial-mark">j<span>✳</span></div><div><p class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> A NOTE FROM JOY GALERY</p><h2>For the ideas in your head<br>and the stories <em>in your heart.</em></h2></div><p>Joy Galery adalah sudut kecil untuk menemukan digital goodies yang playful, thoughtful, dan mudah kamu jadikan milikmu. Pilih yang kamu suka, lalu biarkan kreativitasmu berjalan.</p></div></section>
+
+<section class="section how-section" id="cara-beli"><div class="container"><div class="section-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> SIMPLE AS ONE, TWO, THREE</p><h2>From here to <em>yours.</em></h2></div><p class="heading-side">Checkout mudah dengan<br>pembayaran QRIS.</p></div>
+  <div class="steps-grid"><article class="step-card"><span class="step-number">01</span><span class="step-icon">✳</span><h3>Find your favourite</h3><p>Jelajahi koleksi dan pilih produk digital yang paling kamu suka.</p><span class="step-line"></span></article><article class="step-card"><span class="step-number">02</span><span class="step-icon">▦</span><h3>Pay with QRIS</h3><p>Scan kode QRIS saat checkout, lalu unggah bukti pembayaran agar mudah diverifikasi.</p><span class="step-line"></span></article><article class="step-card"><span class="step-number">03</span><span class="step-icon">♡</span><h3>Get your joy</h3><p>Admin akan mengonfirmasi pembayaran dan mengirim detail produk digital pada halaman pesananmu.</p><span class="step-line"></span></article></div>
+</div></section>
+<section class="closing-cta"><div class="container closing-inner"><span class="closing-spark">✳</span><p>YOUR NEXT LITTLE FAVOURITE IS HERE.</p><a href="#koleksi">Back to the collection ↑</a></div></section>
+<%- include('partials/footer') %>

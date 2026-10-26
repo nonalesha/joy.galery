@@ -1,0 +1,16 @@
+services:
+  joy-galery:
+    build: .
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      # Override only for local HTTP development. The Docker image itself defaults to production.
+      NODE_ENV: development
+      DATA_DIR: /data
+    volumes:
+      - joy-galery-data:/data
+    restart: unless-stopped
+volumes:
+  joy-galery-data:
